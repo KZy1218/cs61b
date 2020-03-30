@@ -1,0 +1,28 @@
+Q: Is one sorting algorithm always faster than another?
+A: No. The performance difference between different algorithm is small when the input array size is small. From the plot we can see that
+   the wiping bubble sort takes more time than bubble sort, but as the array size increases, bubble sort will need more time.
+
+Q: Above we said that BubbleSort, WipingBubbleSort, and InsertionSort each had the same Theta(N^2) asymptotic time complexity. How can you explain the differences in the plots for these three algorithms?
+A: Theta notation just represents an average case. In different arrays, since arrays are generated randomly, the number of times we need to compare
+   or swap is different. Thus the performance is different. Moreover, Theta(N^2) contains a set of functions, 1 * N^2 and 10000 * N^2 are different.
+   The coefficient should be taken into account when we consider the runtime.
+
+Q: What information can we gain from empirical analysis of algorithms which might not be as noticeable in asymptotical bounds?
+A: The asymptotical notation will not give us the exact behavior of an algorithm. For example, we ignore the constant term in asymptotical
+   notation. When we conduct empirical analysis, the graph can tell us something about these constant, and maybe some other factors that
+   is omitted.
+
+Q: For any given sorting algorithm, does increasing the array size always mean the sorting takes longer?
+A: No. From the graph we plot, JavaSorter's runtime is quite flat regardless of the input array size. This indicates that the algorithm is very efficient.
+
+Q: How does changing nrepeats change the plot?
+A: If we increase the nrepeats, the difference of microseconds between different algorithm as size grows large will become larger.
+   Similarly, if we decrease the nrepeats, the difference of microseconds will be smaller. Also for the same size of array, larger nrepeats
+   will lead to larger runtime.
+
+Q: Is your plot the exact same as your partner's plot, even with the same values of ntrials, by, and nrepeats?
+A: No. It is nearly impossible to have the exact same plot. Since every time we are calculating our runtime on different arrays (they are randomly generated),
+   even though we have the same input parameters.
+
+Q: Optional: Look at the source code for BubbleSorter to WipingBubbleSorter. After looking at the plots, can you intuitively explain why WipingBubbleSorter is usually 2x as fast as BubbleSorter? (Hint: Consider the immobility of some elements when the swapping passes are single directional (i.e. only going forward), and how this "Wiping" strategy helps deal with that issue.) Can you come up with an example that shows the difference in runtime?
+A:

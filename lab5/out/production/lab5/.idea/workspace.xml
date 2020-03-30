@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee5dc480-d5ba-469d-991e-4ca526b9d192" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ColumnMatchFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ColumnMatchFilter.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Y2z8fQFhtEZPUkp7ApUPowzCot" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TestTable.testCreateRow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestTable" />
+      <option name="METHOD_NAME" value="testCreateRow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestTable.testCreateRow" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee5dc480-d5ba-469d-991e-4ca526b9d192" name="Default Changelist" comment="" />
+      <created>1582155318424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582155318424</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="528" y="243" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582155340127">
+      <screen x="0" y="23" width="1680" height="953" />
+    </state>
+    <state x="528" y="243" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1680.953@0.23.1680.953" timestamp="1582155340127" />
+    <state x="328" y="81" key="SettingsEditor" timestamp="1582155515256">
+      <screen x="0" y="23" width="1680" height="953" />
+    </state>
+    <state x="328" y="81" key="SettingsEditor/0.23.1680.953@0.23.1680.953" timestamp="1582155515256" />
+    <state x="526" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1582155375127">
+      <screen x="0" y="23" width="1680" height="953" />
+    </state>
+    <state x="526" y="332" key="com.intellij.ide.util.TipDialog/0.23.1680.953@0.23.1680.953" timestamp="1582155375127" />
+  </component>
+</project>
