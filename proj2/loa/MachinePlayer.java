@@ -23,6 +23,10 @@ class MachinePlayer extends Player {
      *  a template). */
     MachinePlayer() {
         this(null, null);
+        Random r = new Random();
+        _X = r.nextInt(8);
+        _Y = r.nextInt(8);
+        _center = Square.sq(_Y, _X);
     }
 
     /** A MachinePlayer that plays the SIDE pieces in GAME. */
@@ -83,8 +87,8 @@ class MachinePlayer extends Player {
         if (sense == 1) {
             int maxSofar = -INFTY;
             for (Board potential : children) {
-                int h = findMove(potential, depth - 1, saveMove,
-                        sense, alpha, beta);
+                int h = findMove(potential, depth - 1, false,
+                        -sense, alpha, beta);
                 if (h > maxSofar) {
                     maxSofar = h;
                     recommend = potential;
@@ -98,8 +102,8 @@ class MachinePlayer extends Player {
         } else {
             int minSofar = INFTY;
             for (Board potential : children) {
-                int h = findMove(potential, depth - 1, saveMove,
-                        sense, alpha, beta);
+                int h = findMove(potential, depth - 1, false,
+                        -sense, alpha, beta);
                 if (h < minSofar) {
                     minSofar = h;
                     recommend = potential;
@@ -121,7 +125,7 @@ class MachinePlayer extends Player {
     /** Return a search depth for the current position. */
     private int chooseDepth() {
         Random r = new Random();
-        if (r.nextInt(10) > 5) {
+        if (r.nextInt(10) > 4) {
             return RANDOM_DEPTH1;
         } else {
             return RANDOM_DEPTH2;
@@ -204,9 +208,9 @@ class MachinePlayer extends Player {
         return nextBoard;
     }
 
-    /** Take in a board B and calculate the extend of scattering. */
+    /** Take in a board B and calculate the extend of scattering. Return
+     *  the standard deviation of the whole board. */
     private int centralize(Board b) {
-        Square center  = Square.sq(Y, X);
         ArrayList<Integer> whiteDis = new ArrayList<>();
         ArrayList<Integer> blackDis = new ArrayList<>();
         for (Square sq : Square.ALL_SQUARES) {
@@ -214,9 +218,9 @@ class MachinePlayer extends Player {
                 continue;
             }
             if (b.get(sq) == BP) {
-                blackDis.add(sq.distance(center));
+                blackDis.add(sq.distance(_center));
             } else {
-               whiteDis.add(sq.distance(center));
+                whiteDis.add(sq.distance(_center));
             }
         }
         if (getGame().manualBlack()) {
@@ -247,7 +251,7 @@ class MachinePlayer extends Player {
     private Move _foundMove;
 
     /** Random depth number 1. */
-    static final int RANDOM_DEPTH1 = 3;
+    static final int RANDOM_DEPTH1 = 2;
 
     /** Random depth number 2. */
     static final int RANDOM_DEPTH2 = 2;
@@ -258,10 +262,11 @@ class MachinePlayer extends Player {
     /** Absolute score of a solid structure. */
     static final int SOLID = 40;
 
-    static Random r = new Random();
     /** Random x coordinate to cluster. */
-    static final int X = r.nextInt(8);
+    private static int _X;
 
     /** Random y coordinate to cluster. */
-    static final int Y = r.nextInt(8);
+    private static int _Y;
+    /** The square center for this AI to cluster. */
+    private static Square _center;
 }

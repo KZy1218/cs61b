@@ -131,6 +131,14 @@ class Game {
                 if (!processMove(line)) {
                     error("unknown command: %s%n", line);
                 }
+
+
+
+//                System.out.println(_board.toString());
+//                System.out.println(_board.turn());
+
+
+
                 break;
             }
             }

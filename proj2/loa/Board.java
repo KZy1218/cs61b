@@ -19,7 +19,7 @@ import static loa.Square.*;
 class Board {
 
     /** Default number of moves for each side that results in a draw. */
-    static final int DEFAULT_MOVE_LIMIT = 60;
+    static final int DEFAULT_MOVE_LIMIT = 30;
 
     /** Pattern describing a valid square designator (cr). */
     static final Pattern ROW_COL = Pattern.compile("^[a-h][1-8]$");
@@ -128,6 +128,7 @@ class Board {
         _moves.add(move);
         _subsetsInitialized = false;
         _winnerKnown = false;
+//        winner();
         computeRegions();
     }
 
@@ -254,7 +255,8 @@ class Board {
                 _winnerKnown = true;
                 _winner = BP;
             }
-            if (_moves.size() == 2 * DEFAULT_MOVE_LIMIT) {
+            if ((_moves.size() == 2 * DEFAULT_MOVE_LIMIT)
+                && (_winner == null)) {
                 _winnerKnown = true;
                 _winner = EMP;
             }
@@ -382,11 +384,6 @@ class Board {
     /** Return the very last move. */
     Move lastMove() {
         return _moves.get(_moves.size() - 1);
-    }
-
-    /** Return the list of unretracted moves. */
-    List<Move> allMove() {
-        return _moves;
     }
 
 
