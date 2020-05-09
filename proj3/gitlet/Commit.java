@@ -43,11 +43,16 @@ public class Commit extends Command implements Serializable {
         Commit head = headCommit();
         _logMsg = _args[1];
         _par1 = head.shaID();
-
-        //
-        _par2 = null;
-        //
-
+        if (_logMsg.split(" ")[0].equals("Merged")) {
+            String givenBranch = _logMsg.split(" ")[1];
+            String givenID = readContentsAsString(join(
+                    ".gitlet/refs", givenBranch));
+            Commit p2 = readObject(join(".gitlet/commits", givenID),
+                    Commit.class);
+            _par2 = p2.shaID();
+        } else {
+            _par2 = null;
+        }
         _branch = branch;
         _time = new java.util.Date();
         HashMap<String, String> parMap = head.map();
@@ -75,9 +80,6 @@ public class Commit extends Command implements Serializable {
 
         writeObject(join(".gitlet/commits", shaID()), this);
         writeContents(join(".gitlet/refs", branch), shaID());
-
-        //what about the case when there is a merge or change of branch
-
     }
 
     @Override
@@ -134,6 +136,11 @@ public class Commit extends Command implements Serializable {
         return _logMsg;
     }
 
+    /** Return the branch name of the commit. */
+    String branch() {
+        return _branch;
+    }
+
     /** Return the date of the commit. */
     Date date() {
         return _time;
@@ -143,6 +150,16 @@ public class Commit extends Command implements Serializable {
     Commit par1() {
         return readObject(join(".gitlet/commits", _par1),
                 Commit.class);
+    }
+
+    /** Return the parent 2 commit. */
+    Commit par2() {
+        if (_par2 != null) {
+            return readObject(join(".gitlet/commits", _par2),
+                    Commit.class);
+        } else {
+            return null;
+        }
     }
 
     /** Log message. */

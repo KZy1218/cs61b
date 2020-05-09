@@ -1,0 +1,43 @@
+# Merge failure cases
+> init
+<<<
++ f1.txt testSrc.txt
+> add f1.txt
+<<<
+> commit "added f1"
+<<<
+> merge second
+A branch with that name does not exist.
+<<<
+> branch second
+<<<
+> checkout second
+<<<
++ f_second.txt wug.txt
+> add f_second.txt
+<<<
+> commit "added file in second branch"
+<<<
+> merge second
+Cannot merge a branch with itself.
+<<<
+D HEADER "commit [a-f0-9]+"
+D DATE "Date: \w\w\w \w\w\w \d+ \d\d:\d\d:\d\d \d\d\d\d [-+]\d\d\d\d"
+> log
+===
+${HEADER}
+${DATE}
+added file in second branch
+
+===
+${HEADER}
+${DATE}
+added f1
+
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*
+

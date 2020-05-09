@@ -34,6 +34,16 @@ public class CommandCreator {
             return new Reset(args);
         case "merge":
             return new Merge(args);
+        case "add-remote":
+            return new AddRemote(args);
+        case "rm-remote":
+            return new RmRemote(args);
+        case "push":
+            return new Push(args);
+        case "fetch":
+            return new Fetch(args);
+        case "pull":
+            return new Pull(args);
         default:
             System.out.println("No command with that name exists.");
             System.exit(0);

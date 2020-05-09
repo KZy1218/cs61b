@@ -1,0 +1,34 @@
+# various failure cases test
+> log
+Not in an initialized Gitlet directory.
+<<<
+> init
+<<<
+> find -- wug.txt
+Incorrect operands.
+<<<
+> branch master
+A branch with that name already exists.
+<<<
++ test.txt testSrc.txt
+> add testt.txt
+File does not exist.
+<<<
+> add test.txt
+<<<
+> commit "save test"
+<<<
+D HEADER "commit [a-f0-9]+"
+D DATE "Date: \w\w\w \w\w\w \d+ \d\d:\d\d:\d\d \d\d\d\d [-+]\d\d\d\d"
+> log
+===
+${HEADER}
+${DATE}
+save test
+
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*

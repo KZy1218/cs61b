@@ -18,12 +18,13 @@ public class Remove extends Command {
     @Override
     public void execute() {
         String fileName = _args[1];
+        String shaID;
         File f = new File(fileName);
         Commit head = this.headCommit();
-        String shaID = sha1("blob", readContentsAsString(f));
         Stage rm = readObject(join(".gitlet/remove"), Stage.class);
         Stage add = readObject(join(".gitlet/add"), Stage.class);
         if (head.map().containsKey(fileName)) {
+            shaID = head.map().get(fileName);
             rm.put(fileName, shaID);
             writeObject(join(".gitlet/remove"), rm);
             if (f.exists()) {
@@ -31,6 +32,7 @@ public class Remove extends Command {
             }
         }
         if (add.map().containsKey(fileName)) {
+            shaID = add.map().get(fileName);
             add.remove(fileName, shaID);
             writeObject(join(".gitlet/add"), add);
         }

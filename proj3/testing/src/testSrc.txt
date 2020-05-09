@@ -1,0 +1,2 @@
+This file is used to test my gitlet control system.
+There is nothing special in this file. Good luck.

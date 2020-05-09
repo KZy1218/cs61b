@@ -1,0 +1,62 @@
+# MultiBranches log
+> init
+<<<
++ f1.txt testSrc.txt
+> add f1.txt
+<<<
+> commit "added f1"
+<<<
+> branch second
+<<<
+> checkout second
+<<<
++ f_second.txt wug.txt
+> add f_second.txt
+<<<
+> commit "added file in second branch"
+<<<
+> checkout master
+<<<
++ f_master.txt notwug.txt
+> add f_master.txt
+<<<
+> commit "added file in master branch"
+<<<
+D HEADER "commit [a-f0-9]+"
+D DATE "Date: \w\w\w \w\w\w \d+ \d\d:\d\d:\d\d \d\d\d\d [-+]\d\d\d\d"
+> log
+===
+${HEADER}
+${DATE}
+added file in master branch
+
+===
+${HEADER}
+${DATE}
+added f1
+
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*
+> checkout second
+<<<
+> log
+===
+${HEADER}
+${DATE}
+added file in second branch
+
+===
+${HEADER}
+${DATE}
+added f1
+
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*

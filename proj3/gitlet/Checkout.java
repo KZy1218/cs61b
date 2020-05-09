@@ -43,10 +43,20 @@ public class Checkout extends Command {
         } else if (_args.length == 4) {
             String id = _args[1];
             String fileName = _args[3];
-            Commit c = readObject(join(".gitlet/commits", id), Commit.class);
-            File targetVersion = join(".gitlet/objects", c.map().get(fileName));
-            byte[] content = readContents(targetVersion);
-            writeContents(join(fileName), content);
+            List<String> allID = plainFilenamesIn(
+                    join(".gitlet/commits"));
+            for (String sha : allID) {
+                if (sha.equals(id)
+                        || id.regionMatches(true, 0, sha, 0, id.length())) {
+                    Commit c = readObject(join(".gitlet/commits", sha),
+                            Commit.class);
+                    File targetVersion = join(".gitlet/objects",
+                            c.map().get(fileName));
+                    byte[] content = readContents(targetVersion);
+                    writeContents(join(fileName), content);
+                    break;
+                }
+            }
         }
     }
 
@@ -108,6 +118,7 @@ public class Checkout extends Command {
             if (sha.equals(id)
                     || id.regionMatches(true, 0, sha, 0, id.length())) {
                 flag = true;
+                id = sha;
                 break;
             }
         }
@@ -132,6 +143,9 @@ public class Checkout extends Command {
         String currentBranch = readContentsAsString(
                 join(".gitlet/refs/HEAD/"));
         if (!branchName.contains(args[1])) {
+            if (args[1].contains("/")) {
+                return true;
+            }
             System.out.println("No such branch exists.");
             return false;
         }

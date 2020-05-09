@@ -24,10 +24,12 @@ public class Init extends Command {
         File remove = new File(".gitlet/remove");
         File refs = new File(".gitlet/refs");
         File objects = new File(".gitlet/objects");
+        File remotes = new File(".gitlet/remotes");
         gitletDir.mkdir();
         commits.mkdir();
         refs.mkdir();
         objects.mkdir();
+        remotes.mkdir();
 
         String msg = "initial commit";
         Date d = new Date(Instant.EPOCH.getEpochSecond());
